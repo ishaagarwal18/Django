@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:link{color:rgb(199, 67, 67)}
+        a:visited{color:cadetblue} 
+        a:hover{color:pink;}
+        a:active{color:yellowgreen}
+        a{text-decoration: None;}
+        ul li{color: rgb(114, 114, 228);}
+        ul li:nth-child(3){color:darkblue}
+        input{color: cyan;}
+        input:hover{width: 100px; height: 100px;}
+        input:active{color:yellowgreen;background-image: url(flower.jpg);}
+        p::first-line{font-weight: bold; color: green;}
+        h3::first-letter{color: red;text-decoration: wavy;}
+        ul li::marker{color: rgb(156,224,46);}
+        h1::before{content:"Note:"}
+        p::after{content: "🎀";}
+        ::selection{color: brown; background-color: pink;}
+        .outer{border: 2px solid navy ;padding: 10px ;margin: 5px; background-color: skyblue;}
+        .inner{border:1px solid purple;padding: 5px;margin:5px
+            ;background-color: plum;width: 100px;height: 100px;display: inline-block;}
+        .container{display: flex; flex-direction: row;justify-content: space-around
+            ;align-items: flex-start;flex-wrap: wrap-reverse;gap: 30px
+            ;background-color: lightsalmon;padding: 15px;}
+        .inner1{background-color: steelblue; color: white;padding: 20px; width: 200px;}
+    </style>
+</head>
+<body>
+    <h1>Princess🎀</h1>
+    <a href="https://www.notion.so/ce8051476c8947bc8895aed27d492295?pvs=16" target="_blank">visit notion</a>
+    <ul>
+        <li>abc</li>
+        <li>pqr</li>
+        <li>xyx</li>
+    </ul>
+    <input type="button" value="Click me">
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Facere eius optio deleniti inventore quas doloribus accusantium. Iure alias, earum 
+        velit dolorem magni aspernatur, labore eum tenetur atque, ex reiciendis! Consequatur.</p>
+    <h3>Hello</h3>
+    <ul>
+        <li>ABC</li>
+        <li>DEF</li>
+    </ul>
+    <div class="outer">
+        <div class="inner">Box 1</div>
+        <div class="inner">Box 2</div>
+        <div class="inner">Box 3</div>
+    </div>
+    <div class="container">
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+        <div class="inner1">item1</div>
+        <div class="inner1">item2</div>
+        <div class="inner1">item3</div>
+    </div>
+</body>
+</html>
