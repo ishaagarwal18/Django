@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(to right,#141e30,#243b55);
+            min-height:100vh;
+            color:white;
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            padding:20px 80px;
+            background:rgba(0,0,0,0.4);
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+        }
+
+        .container{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:85vh;
+        }
+
+        form{
+            background:rgba(255,255,255,0.1);
+            padding:40px;
+            width:400px;
+            border-radius:20px;
+            backdrop-filter:blur(10px);
+            animation:fade 1s ease;
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        input{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            margin:12px 0;
+            outline:none;
+        }
+
+        button{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            background:#ff4b2b;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            transition:0.4s;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+        }
+
+        @keyframes fade{
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>🎬 MovieVerse</h2>
+
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'show' %}">Show Movies</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <form method="get">
+
+        <h2>Add Movie</h2>
+
+        <input type="text"
+               placeholder="Movie Name"
+               required
+               name="name">
+
+        <input type="text"
+               placeholder="Director Name"
+               required
+               name="director">
+
+        <input type="number"
+               placeholder="Rating"
+               required
+               name="rating">
+
+        <input type="date"
+               required
+               name="date">
+
+        <button type="submit">
+            Add Movie
+        </button>
+
+    </form>
+</div>
+
+</body>
+</html>
