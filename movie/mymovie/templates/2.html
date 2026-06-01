@@ -1,0 +1,112 @@
+{% extends '1.html' %}
+
+{% block content %}
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Navbar Styles */
+        .navbar { background-color: #ffffff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #1a1a1a; font-size: 1.6rem; font-weight: 800; text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: #007bff; }
+        .nav-links { list-style: none; display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: #4a5568; text-decoration: none; font-size: 1rem; font-weight: 500; position: relative; padding: 4px 0; transition: color 0.2s ease; }
+        .nav-links a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: #007bff; transform-origin: bottom right; transition: transform 0.25s ease-out; }
+        .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: bottom left; }
+        .nav-links a:hover, .nav-links a.active { color: #007bff; }
+        .nav-cta { background-color: #007bff; color: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 6px; font-weight: 600 !important; }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background-color: #0056b3; }
+        .menu-toggle, #menu-checkbox { display: none; }
+
+        /* Main Content */
+        main { flex: 1; }
+        
+        /* Hero Section */
+        .hero { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; display: flex; align-items: center; gap: 4rem; }
+        .hero-content { flex: 1; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; color: #0f172a; margin-bottom: 1.5rem; }
+        .hero-content h1 span { color: #007bff; }
+        .hero-content p { font-size: 1.25rem; color: #475569; margin-bottom: 2.5rem; line-height: 1.6; }
+        .btn-group { display: flex; gap: 1rem; }
+        .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+        .btn-primary { background-color: #007bff; color: white; box-shadow: 0 4px 14px rgba(0, 123, 255, 0.4); }
+        .btn-primary:hover { background-color: #0056b3; transform: translateY(-2px); }
+        .btn-secondary { background-color: #e2e8f0; color: #334155; }
+        .btn-secondary:hover { background-color: #cbd5e1; transform: translateY(-2px); }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .image-placeholder { width: 100%; max-width: 500px; height: 350px; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-radius: 20px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+
+        /* Features Grid */
+        .features { background-color: white; padding: 5rem 2rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.25rem; font-weight: 700; color: #0f172a; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { padding: 2.5rem; border-radius: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 0.75rem; color: #0f172a; }
+        .card p { color: #64748b; line-height: 1.6; }
+
+        /* Footer */
+        footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 2rem; margin-top: auto; border-top: 1px solid #1e293b; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 4rem 1rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .btn-group { justify-content: center; }
+            .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+            .menu-toggle span { width: 25px; height: 3px; background-color: #333; border-radius: 2px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: white; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); gap: 20px; }
+            #menu-checkbox:checked ~ .nav-links { display: flex; }
+        }
+    </style>
+
+
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Crafting Exceptional <span>Digital Products</span></h1>
+                <p>We combine strategic architectural thinking with premium development expertise to build fast, secure, and modern websites optimized for conversion.</p>
+                <div class="btn-group">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Start Your Project</a>
+                    <a href="{% url 'about' %}" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder"></div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Why Work With Us</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Blazing Fast Speed</h3>
+                        <p>Optimized architectures designed to achieve pristine performance metrics and perfect UX standards.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>Modern Design</h3>
+                        <p>Beautiful, intuitive layouts tailored specifically around user interaction and premium design guidelines.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔒</div>
+                        <h3>Secure & Scalable</h3>
+                        <p>Clean engineering structures that ensure security implementations expand flawlessly with business growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}

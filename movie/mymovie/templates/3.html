@@ -1,0 +1,92 @@
+{% extends '1.html' %}
+
+{% block content %}
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Shared Nav & Footer Base */
+        .navbar { background-color: #ffffff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #1a1a1a; font-size: 1.6rem; font-weight: 800; text-decoration: none; }
+        .logo span { color: #007bff; }
+        .nav-links { list-style: none; display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: #4a5568; text-decoration: none; font-size: 1rem; font-weight: 500; position: relative; padding: 4px 0; }
+        .nav-links a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: #007bff; transition: transform 0.25s ease-out; }
+        .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+        .nav-links a:hover, .nav-links a.active { color: #007bff; }
+        .nav-cta { background-color: #007bff; color: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 6px; }
+        .nav-cta:hover { background-color: #0056b3; }
+        .menu-toggle, #menu-checkbox { display: none; }
+
+        /* About Layout */
+        main { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; width: 100%; }
+        .story-section { margin-bottom: 5rem; text-align: center; }
+        .story-section h1 { font-size: 3rem; font-weight: 800; color: #0f172a; margin-bottom: 1.5rem; }
+        .story-section p { font-size: 1.2rem; color: #475569; line-height: 1.7; max-width: 800px; margin: 0 auto; }
+
+        /* Stats Strip */
+        .stats-container { display: flex; justify-content: space-around; gap: 2rem; background: white; padding: 3rem; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: #007bff; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1rem; color: #64748b; font-weight: 500; }
+
+        /* Values Grid */
+        .values-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #0f172a; }
+        .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .value-card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .value-card h3 { font-size: 1.25rem; color: #0f172a; margin-bottom: 0.75rem; }
+        .value-card p { color: #475569; line-height: 1.6; }
+
+        footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 2rem; margin-top: auto; }
+
+        @media (max-width: 768px) {
+            .stats-container { flex-direction: column; gap: 3rem; }
+            .values-grid { grid-template-columns: 1fr; }
+            .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+            .menu-toggle span { width: 25px; height: 3px; background-color: #333; border-radius: 2px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: white; padding: 1.5rem; gap: 20px; }
+            #menu-checkbox:checked ~ .nav-links { display: flex; }
+        }
+    </style>
+
+
+
+    <main>
+        <section class="story-section">
+            <h1>Our Story</h1>
+            <p>We are a dedicated collective of engineering professionals and visual problem solvers. Founded with the mission to clean up the digital space, we design fast, modern solutions that empower corporate scaling and establish reliable brand identities.</p>
+        </section>
+
+        <section class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Deployed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12M+</div>
+                <div class="stat-label">End Users Reached</div>
+            </div>
+        </section>
+
+        <h2 class="values-title">Our Guiding Pillars</h2>
+        <section class="values-grid">
+            <div class="value-card">
+                <h3>Absolute Transparency</h3>
+                <p>We work directly alongside stakeholders with clear architectural roadmaps, open backlogs, and straightforward progress metrics.</p>
+            </div>
+            <div class="value-card">
+                <h3>Quality First Engineering</h3>
+                <p>Every element we commit to production goes through extreme validation to guarantee lifetime performance stability.</p>
+            </div>
+        </section>
+    </main>
+
+
+
+{% endblock %}

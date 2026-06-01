@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+       /* Modern Navbar Styles */
+.navbar { 
+    background-color: #ffffff; 
+    padding: 1rem 2rem; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.nav-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.logo { 
+    color: #1a1a1a; 
+    font-size: 1.6rem; 
+    font-weight: 800; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.logo span {
+    color: #007bff; /* Accent color for the logo */
+}
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 32px; 
+    align-items: center;
+}
+.nav-links a { 
+    color: #4a5568; 
+    text-decoration: none; 
+    font-size: 1rem; 
+    font-weight: 500;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease; 
+}
+
+/* Premium Expanding Underline Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #007bff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.nav-links a:hover::after, 
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.nav-links a:hover, 
+.nav-links a.active { 
+    color: #007bff; 
+}
+
+/* Call to Action Button inside Navbar */
+.nav-cta {
+    background-color: #007bff;
+    color: #ffffff !important;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background-color 0.2s ease !important;
+}
+.nav-cta::after {
+    display: none !important; /* Remove underline effect for CTA button */
+}
+.nav-cta:hover {
+    background-color: #0056b3;
+    color: #ffffff !important;
+}
+
+/* Responsive Mobile Menu Trigger (Pure CSS) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+#menu-checkbox {
+    display: none;
+}
+
+/* Mobile Responsive Media Query */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        gap: 20px;
+    }
+    /* Displays menu when mobile toggle is clicked */
+    #menu-checkbox:checked ~ .nav-links {
+        display: flex;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Modern Navbar Structure -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="" class="logo">Brand<span>Name</span></a>
+        
+        <!-- Invisible checkbox handles mobile toggle state without JavaScript -->
+        <input type="checkbox" id="menu-checkbox">
+        <label for="menu-checkbox" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}" class="active">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-cta">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Content from Home/About/Contact pages gets injected here -->
+     {% block content %}
+
+     <h1>Hello</h1>
+    <img src="E:\Bday\IMG-20260525-WA0051.jpg">
+
+     {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BrandName. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

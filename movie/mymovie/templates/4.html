@@ -1,0 +1,103 @@
+{% extends '1.html' %}
+{% block content %}
+
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Shared Nav & Footer Base */
+        .navbar { background-color: #ffffff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #1a1a1a; font-size: 1.6rem; font-weight: 800; text-decoration: none; }
+        .logo span { color: #007bff; }
+        .nav-links { list-style: none; display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: #4a5568; text-decoration: none; font-size: 1rem; font-weight: 500; position: relative; padding: 4px 0; }
+        .nav-links a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: #007bff; transition: transform 0.25s ease-out; }
+        .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+        .nav-links a:hover, .nav-links a.active { color: #007bff; }
+        .nav-cta { background-color: #007bff; color: #ffffff !important; padding: 0.6rem 1.2rem !important; border-radius: 6px; }
+        .menu-toggle, #menu-checkbox { display: none; }
+
+        /* Contact Layout Split */
+        main { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; width: 100%; display: flex; gap: 4rem; }
+        .info-panel { flex: 1; }
+        .info-panel h1 { font-size: 3rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem; }
+        .info-panel p { font-size: 1.15rem; color: #475569; margin-bottom: 3rem; line-height: 1.6; }
+        
+        .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+        .detail-item { display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .detail-icon { font-size: 1.5rem; background: #e0e7ff; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #007bff; }
+        .detail-text h4 { color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .detail-text p { color: #1e293b; font-weight: 600; margin: 0; font-size: 1.05rem; }
+
+        /* Form Wrapper */
+        .form-panel { flex: 1.2; background: white; padding: 3rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #334155; font-weight: 600; font-size: 0.95rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; color: #1e293b; transition: all 0.2s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15); }
+        .form-group textarea { resize: vertical; height: 130px; }
+        
+        button { background-color: #007bff; color: white; border: none; padding: 1rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: background 0.2s ease; }
+        button:hover { background-color: #0056b3; }
+
+        footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 2rem; margin-top: auto; }
+
+        @media (max-width: 900px) {
+            main { flex-direction: column; gap: 3rem; padding: 3rem 1rem; }
+            .info-panel h1 { font-size: 2.5rem; }
+            .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+            .menu-toggle span { width: 25px; height: 3px; background-color: #333; border-radius: 2px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: white; padding: 1.5rem; gap: 20px; }
+            #menu-checkbox:checked ~ .nav-links { display: flex; }
+        }
+    </style>
+
+
+
+    <main>
+        <div class="info-panel">
+            <h1>Let's Talk</h1>
+            <p>Have an idea or an ongoing system constraint? Reach out to our technical coordinators. We respond to all architecture evaluations within one working business day.</p>
+            
+            <div class="contact-details">
+                <div class="detail-item">
+                    <div class="detail-icon">✉️</div>
+                    <div class="detail-text">
+                        <h4>Email Us</h4>
+                        <p>hello@brandname.com</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-text">
+                        <h4>HQ Location</h4>
+                        <p>San Francisco, CA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Alex Mercer">
+                </div>
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" required placeholder="alex@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Brief</label>
+                    <textarea id="message" required placeholder="Tell us about what you are intending to scale..."></textarea>
+                </div>
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </main>
+
+
+
+{% endblock %}
