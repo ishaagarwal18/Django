@@ -1,0 +1,9 @@
+Step 1: Create Project 
+python -m django startproject project-name
+
+Step 2: cd project-name
+
+Step 3: create app
+python manage.py startapp app-name
+
+Step 4: register app in settings.py
