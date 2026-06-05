@@ -1,115 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Show Movies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Records</title>
 
     <style>
-
         *{
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial,sans-serif;
+            font-family:'Segoe UI',sans-serif;
         }
 
         body{
-            background:linear-gradient(to right,#141e30,#243b55);
-            color:white;
-            min-height:100vh;
-        }
-
-        nav{
-            display:flex;
-            justify-content:space-between;
-            padding:20px 80px;
-            background:rgba(0,0,0,0.4);
-        }
-
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin-left:20px;
-        }
-
-        h1{
-            text-align:center;
-            margin:40px 0;
+            background:#ffeef5;
+            padding:30px;
         }
 
         .container{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:25px;
-            padding:30px 80px;
+            max-width:1000px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 0 15px rgba(0,0,0,0.1);
         }
 
-        .movie-card{
-            background:rgba(255,255,255,0.1);
-            padding:25px;
-            border-radius:20px;
-            backdrop-filter:blur(10px);
-            transition:0.4s;
-            animation:slide 1s ease;
+        .top{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:20px;
         }
 
-        .movie-card:hover{
-            transform:translateY(-10px);
+        .btn{
+            text-decoration:none;
+            background:#ff85a2;
+            color:white;
+            padding:10px 18px;
+            border-radius:8px;
+            font-weight:bold;
         }
 
-        .movie-card h2{
-            margin-bottom:15px;
+        .btn:hover{
+            background:#ff5c8a;
         }
 
-        .movie-card p{
-            margin:10px 0;
-            color:#ddd;
+        h2{
+            text-align:center;
+            color:#ff5c8a;
+            margin-bottom:20px;
         }
 
-        @keyframes slide{
-            from{
-                opacity:0;
-                transform:translateY(40px);
-            }
-
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
+        table{
+            width:100%;
+            border-collapse:collapse;
         }
 
+        th{
+            background:#ff85a2;
+            color:white;
+            padding:15px;
+        }
+
+        td{
+            text-align:center;
+            padding:12px;
+            border-bottom:1px solid #ffd6df;
+        }
+
+        tr:hover{
+            background:#fff4f7;
+        }
+
+        .search-form{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .search-form input{
+            padding:10px;
+            width:300px;
+            border:2px solid #ffb6c1;
+            border-radius:8px;
+        }
+
+        .search-form button{
+            padding:10px 15px;
+            background:#ff85a2;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
     </style>
 </head>
-
 <body>
-
-<nav>
-    <h2>🎬 MovieVerse</h2>
-
-    <div>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'add' %}">Add Movie</a>
-    </div>
-</nav>
-
-<h1>All Movies 🍿</h1>
 
 <div class="container">
 
-    {% for i in movies %}
-
-    <div class="movie-card">
-
-        <h2>{{i.name}}</h2>
-
-        <p><strong>Director:</strong> {{i.director}}</p>
-
-        <p><strong>Rating:</strong> ⭐ {{i.rating}}/10</p>
-
-        <p><strong>Date:</strong> {{i.date}}</p>
-
+    <div class="top">
+        <a href="{% url 'home' %}" class="btn">🏠 Home</a>
+        <a href="{% url 'add' %}" class="btn">➕ Add Movie</a>
     </div>
 
-    {% endfor %}
+    <h2>🎬 Movie Records</h2>
+
+    <form method="GET" action="{% url 'show' %}" class="search-form">
+        <input type="text" name="search" placeholder="Search Movie Name">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Movie Name</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Release Date</th>
+        </tr>
+
+        {% for i in d1 %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.director }}</td>
+            <td>⭐ {{ i.rating }}</td>
+            <td>{{ i.date }}</td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="4">No Movies Found</td>
+        </tr>
+        {% endfor %}
+
+    </table>
 
 </div>
 
