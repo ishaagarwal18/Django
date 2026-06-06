@@ -1,0 +1,43 @@
+python -m Django startproject IPL
+cd IPL
+python manage.py startapp Cricket
+
+
+--models.py
+class cricketer(models.Model):
+	name=models.CharField(max_length=60)
+	team_name=models.CharField(max_length=60)
+	runs=models.IntegerField()
+	dob=models.DateField()
+
+
+python manage.py makemigrations
+python manage.py migrate 
+python manage.py makesupersure
+
+
+--views.py
+from .models import cricketer
+def show(request):
+	search=request.GET.get("se")
+	if search:
+		data=cricketer.objects.filter(name__icontains=search)
+		return render(request,"1.html",{"data":data})
+	data=cricketer.objects.all()
+	return render(request,"1.html",{"data":data})
+
+
+--admin.py
+import .models from cricketer
+admin.register.site(cricketer)
+
+
+--1.html
+{% for i in data %}
+	<p>{{i.name}}<p>
+	<p>{{i.team_name}}<p>
+	<p>{{i.runs}}<p>
+	<p>{{i.dob}}<p>
+{% endfor %}
+
+python manage.py runserver
