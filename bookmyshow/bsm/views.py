@@ -29,17 +29,17 @@ def add(request):
 
 def show(request):
 
-    # search=request.GET.get("search")
-    # if search:
-    #     d1=Movie.objects.filter(name__icontains=search)
-    # else:
-    #     d1=Movie.objects.all()
-    # d2={"d1":d1,"se":search}
+    search=request.GET.get("search")
+    if search:
+        d1=Movie.objects.filter(name__icontains=search)
+    else:
+        d1=Movie.objects.all()
+    d2={"d1":d1,"se":search}
 
-    movies = Movie.objects.all()
+    # movies = Movie.objects.all()
 
-    data = {
-        "movies": movies
-    }
+    # data = {
+    #     "movies": movies
+    # }
 
-    return render(request,"show.html",data)
+    return render(request,"show.html",d2)
