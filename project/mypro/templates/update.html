@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-body: #fafafa;
+            --bg-card: #ffffff;
+            --border-color: #d1d5db;
+            --border-focus: #3b82f6;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: var(--bg-card);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-title {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .form-subtitle {
+            margin: 0 0 24px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Input Layout groups */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #fff;
+            color: var(--text-main);
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        /* Smooth interactive states */
+        input:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Modern action button */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2 class="form-title">Project Registration</h2>
+        <p class="form-subtitle">Please fill out the details below to submit your project information.</p>
+        
+        <!-- Update the action attribute to link with your backend router -->
+        <form action="/display" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="Name" placeholder="Enter your name" required value="{{d.Name}}">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="DOB" required value="{{d.DOB}}">
+            </div>
+
+            <div class="form-group">
+                <label for="enrollment">Enrollment Number</label>
+                <input type="text" id="enrollment" name="enrollment" placeholder="Enter your enrollment" required value="{{d.enrollment}}">
+            </div>
+
+            <div class="form-group">
+                <label for="title">Project Title</label>
+                <input type="text" id="title" name="project_title" placeholder="Enter your project title" required value="{{d.project_title}}">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Details</button>
+        </form>
+    </div>
+
+</body>
+</html>
