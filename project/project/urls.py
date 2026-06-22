@@ -20,6 +20,6 @@ from mypro import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("display",views.display),
+    path("display",views.display,name="display"),
     path("update<int:id>",views.update,name="update")
 ]
