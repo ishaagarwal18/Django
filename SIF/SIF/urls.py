@@ -1,5 +1,5 @@
 """
-URL configuration for project project.
+URL configuration for SIF project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mypro import views
-
+from info import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("display",views.display,name="display"),
-    path("update<int:id>",views.update,name="update"),
-    path("delete<int:id>",views.delete,name="delete")
+    path("home",views.home,name="home"),
+    path("",views.user_login,name="login"),
+    path("logout",views.user_logout,name="l")
 ]

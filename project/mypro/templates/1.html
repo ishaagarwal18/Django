@@ -82,7 +82,8 @@
                     <th>DOB</th>
                     <th>Enrollment</th>
                     <th>Project Title</th>
-                    <th>Action</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,6 +94,7 @@
                     <td>{{ i.enrollment }}</td>
                     <td class="project-title">{{ i.project_title }}</td>
                     <td><a href="{% url 'update' i.id %}">Edit</a></td>
+                    <td><a href="{% url 'delete' i.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

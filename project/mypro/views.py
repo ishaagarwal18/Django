@@ -17,3 +17,8 @@ def update(request,id):
         return redirect("display")
     
     return render(request,"update.html",{"d":d})
+
+def delete(request,id):
+    f=get_object_or_404(Student,id=id)
+    f.delete()
+    return redirect("display")
