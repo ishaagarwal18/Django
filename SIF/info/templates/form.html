@@ -1,0 +1,209 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        Name:<input type="text" name="name">
+        Roll no:<input type="number" name="rollno">
+        Enroll:<input type="number" name="enroll">
+        DOB:<input type="date" name="date">
+        Title::<input type="text" name="title">
+        <button type="submit"><a href="{% url 'home' %}"></a>Submit</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+            overflow:hidden;
+        }
+
+        .container{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .card{
+            width:450px;
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(20px);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:25px;
+            padding:35px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .card h2{
+            text-align:center;
+            color:#fff;
+            margin-bottom:30px;
+            font-size:30px;
+            font-weight:700;
+        }
+
+        .input-box{
+            margin-bottom:20px;
+        }
+
+        .input-box label{
+            display:block;
+            color:#cbd5e1;
+            margin-bottom:8px;
+            font-weight:500;
+        }
+
+        .input-box input{
+            width:100%;
+            padding:14px;
+            border:none;
+            outline:none;
+            border-radius:12px;
+            background:rgba(255,255,255,0.08);
+            color:#fff;
+            font-size:15px;
+            border:1px solid rgba(255,255,255,0.1);
+            transition:0.3s;
+        }
+
+        .input-box input::placeholder{
+            color:#94a3b8;
+        }
+
+        .input-box input:focus{
+            border-color:#8b5cf6;
+            box-shadow:0 0 15px rgba(139,92,246,0.5);
+            transform:translateY(-2px);
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:linear-gradient(45deg,#7c3aed,#8b5cf6);
+            color:white;
+            font-size:17px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        button:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 25px rgba(139,92,246,0.5);
+        }
+
+        .card::before{
+            content:"";
+            position:absolute;
+            width:150px;
+            height:150px;
+            background:#7c3aed;
+            border-radius:50%;
+            top:-70px;
+            right:-70px;
+            filter:blur(90px);
+            opacity:0.5;
+        }
+
+        .card::after{
+            content:"";
+            position:absolute;
+            width:150px;
+            height:150px;
+            background:#06b6d4;
+            border-radius:50%;
+            bottom:-70px;
+            left:-70px;
+            filter:blur(90px);
+            opacity:0.4;
+        }
+
+        .card{
+            position:relative;
+            overflow:hidden;
+        }
+
+        @media(max-width:500px){
+            .card{
+                width:100%;
+                padding:25px;
+            }
+
+            .card h2{
+                font-size:24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>🎓 Student Registration</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-box">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Enter your name">
+            </div>
+
+            <div class="input-box">
+                <label>Roll Number</label>
+                <input type="number" name="rollno" placeholder="Enter roll number">
+            </div>
+
+            <div class="input-box">
+                <label>Enrollment Number</label>
+                <input type="number" name="enroll" placeholder="Enter enrollment number">
+            </div>
+
+            <div class="input-box">
+                <label>Date of Birth</label>
+                <input type="date" name="date">
+            </div>
+
+            <div class="input-box">
+                <label>Title</label>
+                <input type="text" name="title" placeholder="Enter title">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

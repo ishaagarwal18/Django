@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,156 @@
 </head>
 <body>
     <h1>Home page</h1><br>
+    <a href="{% url 'form' %}" >Add</a>
     <a href="{% url 'l' %}">logout</a>
+
+    {% for i in data %}
+        <p>{{i.name}}</p>
+        <p>{{i.roll_no}}</p>
+        <p>{{i.enrollment}}</p>
+        <p>{{i.DOB}}</p>
+        <p>{{i.title}}</p>
+    {% endfor %}
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+            min-height:100vh;
+            color:white;
+            padding:40px;
+        }
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:40px;
+        }
+
+        .navbar h1{
+            font-size:35px;
+            color:#fff;
+        }
+
+        .buttons a{
+            text-decoration:none;
+            padding:12px 22px;
+            border-radius:12px;
+            margin-left:10px;
+            color:white;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        .add-btn{
+            background:linear-gradient(45deg,#7c3aed,#8b5cf6);
+        }
+
+        .logout-btn{
+            background:linear-gradient(45deg,#ef4444,#dc2626);
+        }
+
+        .buttons a:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(255,255,255,0.1);
+        }
+
+        .container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:25px;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(15px);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:20px;
+            padding:25px;
+            transition:0.4s;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 30px rgba(139,92,246,0.4);
+        }
+
+        .card h3{
+            color:#8b5cf6;
+            margin-bottom:20px;
+            font-size:24px;
+        }
+
+        .card p{
+            margin:12px 0;
+            color:#d1d5db;
+            font-size:15px;
+        }
+
+        .card span{
+            color:white;
+            font-weight:600;
+        }
+
+        .empty{
+            text-align:center;
+            margin-top:80px;
+            font-size:22px;
+            color:#94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>🎓 Student Dashboard</h1>
+
+        <div class="buttons">
+            <a href="{% url 'form' %}" class="add-btn">+ Add Student</a>
+            <a href="{% url 'l' %}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    {% if data %}
+    <div class="container">
+
+        {% for i in data %}
+        <div class="card">
+            <h3>{{ i.name }}</h3>
+
+            <p><span>Roll No:</span> {{ i.roll_no }}</p>
+            <p><span>Enrollment:</span> {{ i.enrollment }}</p>
+            <p><span>Date of Birth:</span> {{ i.DOB }}</p>
+            <p><span>Title:</span> {{ i.title }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+        <div class="empty">
+            No Students Added Yet 🚀
+        </div>
+    {% endif %}
+
 </body>
 </html>

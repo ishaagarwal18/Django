@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout
+from .models import student
 # Create your views here.
 
 def home(request):
-    return render(request,"home.html")
+    data=student.objects.all()
+    return render(request,"home.html",{"data":data})
 
 def user_login(request):
 
@@ -21,3 +23,14 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect("login")
+
+def form(request):
+    if request.method=="POST":
+        name=request.POST.get("name")
+        roll=request.POST.get("rollno")
+        enroll=request.POST.get("enroll")
+        dob=request.POST.get("date")
+        title=request.POST.get("title")
+        student.objects.create(name=name,roll_no=roll,enrollment=enroll,DOB=dob,title=title)
+        return redirect("home")
+    return render(request,"form.html")
