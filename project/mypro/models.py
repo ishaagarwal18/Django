@@ -8,3 +8,7 @@ class Student(models.Model):
     project_title=models.CharField()
     def __str__(self):
         return self.Name
+    
+class Faculty(models.Model):
+    name=models.CharField()
+    ptitle=models.ForeignKey(Student,on_delete=models.CASCADE)

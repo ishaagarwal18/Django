@@ -1,5 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Student
+from .models import Student,Faculty
+from rest_framework import viewsets
+from .serializers import Studentserializer,Facultyserializer
 # Create your views here.
 
 def display(request):
@@ -22,3 +24,12 @@ def delete(request,id):
     f=get_object_or_404(Student,id=id)
     f.delete()
     return redirect("display")
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset=Student.objects.all()
+    serializer_class=Studentserializer
+
+
+class FacultyViewSet(viewsets.ModelViewSet):
+    queryset=Faculty.objects.all()
+    serializer_class=Facultyserializer
